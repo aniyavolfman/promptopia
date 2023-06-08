@@ -3,6 +3,8 @@ import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 import Footer from "@components/Footer";
+import { Suspense } from "react";
+
 
 export const metadata = {
   title: "Promptopia",
@@ -21,7 +23,9 @@ const RootLayout = ({ children }) => {
             <header className="header">
               <Nav />
             </header>
-            <main>{children}</main>
+            <main>
+              {children}
+            </main>
             <Footer />
           </div>
         </Provider>

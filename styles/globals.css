@@ -234,3 +234,17 @@ transform: translateY(-2px);
   min-height: 50px;
   padding: 20px;
 }
+
+.wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.profile:hover img {
+box-shadow: 1px 4px 20px -2px #0003;
+transform: translateY(-4px);
+}
+
+.profile:hover h3{
+text-decoration-line: underline;
+}

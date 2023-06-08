@@ -6,17 +6,21 @@ import { useRouter } from "next/navigation";
 
 import Profile from "@components/profile";
 import postcss from "postcss";
+import Spinner from "@components/Spinner";
 
 const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [myPosts, setMyPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+     if (!session?.user.id) return router.push("/");
     const fetchPosts = async () => {
+      setLoading(true);
       const response = await fetch(`/api/users/${session.user.id}/posts`);
       const data = await response.json();
-
+      setLoading(false);
       setMyPosts(data);
     };
     if (session?.user.id) fetchPosts();
@@ -42,13 +46,16 @@ const MyProfile = () => {
   };
 
   return (
-    <Profile
-      name="My"
-      desc="Welcome to your personalized profile page!"
-      data={myPosts}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
+    <>
+      {loading && <Spinner />}
+      <Profile
+        name="My"
+        desc="Welcome to your personalized profile page!"
+        data={myPosts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </>
   );
 };
 
