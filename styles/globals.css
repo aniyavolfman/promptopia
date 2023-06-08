@@ -4,9 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
+.header{
+  width: 100%;
+}
 
 .main {
   width: 100vw;
@@ -71,6 +71,23 @@
   }
 }
 
+.btn {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 2px 5px;
+}
+
+.btn:hover {
+box-shadow: 1px 4px 20px -2px #0003;
+color: #fafafa;
+border: 1px solid white;
+background-color: tomato;
+}
+
+.tag:hover{
+  color: #fafafa;
+}
+
 /* Tailwind Styles */
 
 .app {
@@ -78,11 +95,24 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black py-1.5 px-5 text-black transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  background-color: #cecbf2cc;
+  transition: all cubic-bezier (0.4, 0, 0.2, 1) 0.3s;
+}
+
+.black_btn:hover {
+  box-shadow: 1px 4px 20px -2px #0003;
+  transform: translateY(-2px);
 }
 
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+transition: all cubic-bezier (0.4, 0, 0.2, 1) 0.3s;
+}
+
+.outline_btn:hover{
+box-shadow: 1px 4px 20px -2px #0003;
+transform: translateY(-2px);
 }
 
 .head_text {
@@ -110,7 +140,12 @@
 }
 
 .copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  @apply w-7 h-7 rounded-full  shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  background-color: #fafafa;
+}
+
+.copy_btn:hover {
+box-shadow: 1px 4px 20px -2px #0003;
 }
 
 .glassmorphism {
@@ -119,8 +154,16 @@
 
 .prompt_layout {
   @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  min-height: 50vh;
 }
 
+.avatar{
+  transition: all cubic-bezier (0.4, 0, 0.2, 1) 0.3s;
+}
+.avatar:hover {
+box-shadow: 1px 4px 20px -2px #0003;
+transform: translateY(-2px);
+}
 /* Feed Component */
 .feed {
   @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
@@ -151,8 +194,14 @@
 /* PromptCard Component */
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  background-color: #cecbf2cc;
+  transition: transform cubic-bezier (0.4, 0, 0.2, 1) 0.3s;
 }
 
+.prompt_card:hover {
+  box-shadow: 1px 4px 20px -2px #0003;
+  transform: translateY(-8px);
+}
 .flex-center {
   @apply flex justify-center items-center;
 }
@@ -167,4 +216,21 @@
 
 .flex-between {
   @apply flex justify-between items-center;
+}
+
+.logo {
+  transition: transform cubic-bezier (0.4, 0, 0.2, 1) 0.3s;
+}
+
+.logo:hover img {
+  transform: translateY(-4px);
+}
+
+.logo:hover .logo_text{
+  text-decoration-line: underline;
+}
+
+.footer{
+  min-height: 50px;
+  padding: 20px;
 }

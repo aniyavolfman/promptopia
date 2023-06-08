@@ -6,6 +6,11 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+  
+  const { data: session } = useSession();
+  const pathName = usePathname();
+  const router = useRouter();
+
   const [copied, setCopied] = useState("");
 
   const handleCopy = () => {
@@ -24,7 +29,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             alt="user image"
             width={40}
             height={40}
-            className="rounded=full object-contain"
+            className="rounded-full object-contain"
           />
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibolt text-gray-900">
@@ -44,17 +49,33 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             }
             width={12}
             height={12}
-            alt='icon'
+            alt="icon"
           />
         </div>
       </div>
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
       <p
-        className="font-inter text-sm blue-gradient cursor-pointer"
+        className="font-inter text-sm blue_gradient cursor-pointer tag"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}
       </p>
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <button type="button"
+            className="font-inter text-sm cursor-pointer bg-white btn"
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+          <button type="button"
+            className="font-inter text-sm cursor-pointer btn"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   );
 };
