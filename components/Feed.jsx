@@ -29,15 +29,26 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      setLoading(true);
-      const response = await fetch("/api/prompt");
-      const data = await response.json();
+try {
+  setLoading(true);
+  const response = await fetch("/api/prompt", {
+    method: 'GET',
+    cache: 'no-cache',
+  });
+  
+  const data = await response.json();
+  
+  setPosts(data);
+  setLoading(false);
+  
+} catch (error) {
+  console.log(error)
+}
 
-      setPosts(data);
-      setLoading(false);
-    };
+};
 
-    fetchPosts();
+fetchPosts();
+
   }, []);
 
   const filterPrompts = (searchtext) => {
