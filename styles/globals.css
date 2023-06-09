@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*:before,
+*:after {
+  @apply cursor-default;
+}
+
 .header{
   width: 100%;
 }

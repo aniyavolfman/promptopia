@@ -14,6 +14,10 @@ module.exports = {
       colors: {
         "primary-orange": "#FF5722",
       },
+      cursor: {
+        default:
+          "url(https://play.tailwindcss.com/favicons/favicon-16x16.png?v=3), default",
+      },
     },
   },
   plugins: [],
