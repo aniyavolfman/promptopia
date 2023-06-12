@@ -2,7 +2,6 @@ import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
 
 export const GET = async (req, { params }) => {
-   console.log("!!!!!!!!!!!!!!!!!!", req);
   try {
     await connectToDB();
     const prompts = await Prompt.find({});

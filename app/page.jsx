@@ -7,25 +7,7 @@ import Link from "next/link";
 const timestamp = Date.now();
 const project = 'promptopia';
 
-const Home = ({params}) => {
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(`/api/prompts/${project}/prompts`, {
-          method: "GET",
-          cache: "no-cache",
-          next: { revalidate: 60 },
-        });
-
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+const Home = () => {
 
   return (
     <section className="w-full flex-center flex-col">
@@ -39,7 +21,6 @@ const Home = ({params}) => {
         discover, create and share creative prompts
       </p>
       <Feed />
-      <Link href="/feed"> Start!</Link>
     </section>
   );
 };

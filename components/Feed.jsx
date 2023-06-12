@@ -6,6 +6,8 @@ import Promptcard from "./PromptCard";
 import Spinner from "@components/Spinner";
 import { set } from "mongoose";
 
+const project = "promptopia";
+
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-10 prompt_layout">
@@ -31,7 +33,7 @@ const Feed = () => {
     const fetchPosts = async () => {
 try {
   setLoading(true);
-  const response = await fetch("/api/prompt", {
+  const response = await fetch(`/api/prompts/${project}/prompts`, {
     method: "GET",
     cache: "no-cache",
     next: { revalidate: 60 },

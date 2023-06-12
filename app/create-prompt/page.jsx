@@ -14,11 +14,14 @@ const CreatePrompt = () => {
   const [post, setPost] = useState({
     prompt: "",
     tag: "",
+    image: "",
   });
 
   const createPrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+
+    console.log('!!!!!!!!!!!!!!!!',session)
 
     try {
       const response = await fetch("/api/prompt/new", {
@@ -27,6 +30,7 @@ const CreatePrompt = () => {
           prompt: post.prompt,
           userId: session?.user.id,
           tag: post.tag,
+          image: session?.user.image,
         }),
       });
 
