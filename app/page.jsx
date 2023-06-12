@@ -4,11 +4,13 @@ import Feed from "@components/Feed";
 import { useEffect } from "react";
 import Link from "next/link";
 
+const timestamp = Date.now();
+
 const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("/api/prompt", {
+        const response = await fetch(`/api/prompt?timestamp=${timestamp}`, {
           method: "GET",
           cache: "no-cache",
           next: { revalidate: 60 },
