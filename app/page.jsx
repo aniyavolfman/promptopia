@@ -5,12 +5,13 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 const timestamp = Date.now();
+const project = 'promptopia';
 
-const Home = () => {
+const Home = ({params}) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`/api/prompt?timestamp=${timestamp}`, {
+        const response = await fetch(`/api/prompts/${project}/prompts`, {
           method: "GET",
           cache: "no-cache",
           next: { revalidate: 60 },
