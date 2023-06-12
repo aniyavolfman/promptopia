@@ -2,9 +2,8 @@
 
 import Feed from "@components/Feed";
 import { useEffect } from "react";
-import Link from "next/link";
 
-const Home = () => {
+const MyFeed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -36,9 +35,8 @@ const Home = () => {
         discover, create and share creative prompts
       </p>
       <Feed />
-      <Link href="/feed"> Start!</Link>
     </section>
   );
 };
 
-export default Home;
+export default MyFeed;
