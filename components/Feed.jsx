@@ -58,7 +58,7 @@ fetchPosts();
     const regex = new RegExp(searchtext, "i"); 
     return posts.filter(
       (item) =>
-        regex.test(item.creator.username) ||
+        regex.test(item.username) ||
         regex.test(item.tag) ||
         regex.test(item.prompt)
     );
