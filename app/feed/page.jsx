@@ -1,20 +1,21 @@
 "use client";
 
 import Feed from "@components/Feed";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 const MyFeed = () => {
+  const { data: session } = useSession();
+  const [myPosts, setMyPosts] = useState([]);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("/api/prompt", {
-          method: "GET",
-          cache: "no-cache",
-          next: { revalidate: 60 },
-        });
+        const response = await fetch(`/api/posts`);
 
         const data = await response.json();
-        console.log(data);
+        console.log('posts', data);
+        setMyPosts(data);
       } catch (error) {
         console.log(error);
       }
